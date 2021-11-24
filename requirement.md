@@ -65,4 +65,4 @@ As a User A want To decide to play the game again or exit  .
 - Ensure that the user can See two buttons (play,exit) and take decision .
 
 ## Tasks
-[Trello](https://trello.com/b/eyT8EfrQ/ai-survivors)
+[Ai-Survivors-Trello](https://trello.com/b/eyT8EfrQ/ai-survivors)
