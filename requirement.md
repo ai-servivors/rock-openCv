@@ -1,4 +1,4 @@
-## Wirefram
+## Wireframe
 ![wirefram-rock](https://user-images.githubusercontent.com/85867431/143260342-36b60f6a-abe3-4cb3-92eb-5a46c340550c.JPG)
 
 
@@ -64,3 +64,5 @@ As a User A want To decide to play the game again or exit  .
 ***Acceptance Tests :***
 - Ensure that the user can See two buttons (play,exit) and take decision .
 
+## Tasks
+[Trello](https://trello.com/b/eyT8EfrQ/ai-survivors)
