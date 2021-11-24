@@ -22,7 +22,7 @@
 ### - Belal Elolahi
 
 
-## User Stories:
+## Summary of project:
 
 ### basically create  a game called Rock, Paper and Scissors that there are two players play the game at the same time and there are game rules for it :
 
