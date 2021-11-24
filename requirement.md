@@ -1,3 +1,7 @@
+## Wirefram
+![wirefram-rock](https://user-images.githubusercontent.com/85867431/143260342-36b60f6a-abe3-4cb3-92eb-5a46c340550c.JPG)
+
+
 ## User Stories 1 user-interface
 As a user I want to enter my name and gender and I want to see a beautiful game homepage where the user can start the game.
 
@@ -5,6 +9,7 @@ As a user I want to enter my name and gender and I want to see a beautiful game 
 - showing Input name: to enter the player name.
 - showing Input Gender: to enter the player gender.
 - showing Start Button to start the game.
+
 - showing exit button to exit the game.
 
 ***Acceptance Tests :***
