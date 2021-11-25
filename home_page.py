@@ -25,7 +25,7 @@ def play():
         label_message1 = tk.Label(text='Please Inter Your Name')
         label_message1.pack()
     else :
-        import windowTwo
+        import main
         label_Name = tk.Label(text=f'Welcome {input_name.get()}')
         label_Name.pack()
         if label_message1 is not None :
@@ -33,6 +33,7 @@ def play():
 
 def close_window():
     window.destroy()
+    import main
 
 start_button = tk.Button(window,text = "Start", command= show_input_field, activeforeground = "red",activebackground = "blue",pady=10,padx=20)
 exit_button = tk.Button(window,text = "Exit",command = close_window ,activeforeground = "red",activebackground = "blue",pady=10,padx=20)
