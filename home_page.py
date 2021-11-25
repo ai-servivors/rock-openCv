@@ -7,7 +7,7 @@ label_welcome = tk.Label(text="Welcome to the Rock Paper Scissor game").pack()
 def show_input_field() :
     global input_name
     radio = tk.IntVar()
-    input_name = tk.Entry(window)
+    input_name = tk.Entry(window,borderwidth=4,width=12)
     input_name.place(x=190, y=140)
     name_label = tk.Label(window, text = "Name").place(x = 150,y = 140)
     gender_label = tk.Label(window, text = "Gender").place(x = 150,y = 170)
@@ -25,7 +25,7 @@ def play():
         label_message1 = tk.Label(text='Please Inter Your Name')
         label_message1.pack()
     else :
-        import main
+        import windowTwo
         label_Name = tk.Label(text=f'Welcome {input_name.get()}')
         label_Name.pack()
         if label_message1 is not None :
@@ -33,7 +33,7 @@ def play():
 
 def close_window():
     window.destroy()
-    import main
+    import windowTwo
 
 start_button = tk.Button(window,text = "Start", command= show_input_field, activeforeground = "red",activebackground = "blue",pady=10,padx=20)
 exit_button = tk.Button(window,text = "Exit",command = close_window ,activeforeground = "red",activebackground = "blue",pady=10,padx=20)
