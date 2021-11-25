@@ -95,7 +95,7 @@ class RockPaperScissors:
 if __name__ == "__main__":
     rock_paper_scissors = RockPaperScissors()
     rock_paper_scissors.play()
-
+    print('test')
 
 
 
