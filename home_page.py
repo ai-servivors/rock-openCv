@@ -10,13 +10,13 @@ def show_input_field() :
     input_name = tk.Entry(window,borderwidth=4,width=12)
     input_name.place(x=190, y=140)
     name_label = tk.Label(window, text = "Name").place(x = 150,y = 140)
-    gender_label = tk.Label(window, text = "Gender").place(x = 150,y = 170)
+#    gender_label = tk.Label(window, text = "Gender").place(x = 150,y = 170)
 
-    radio_male = tk.Radiobutton(window, text="Male", variable=radio, value=1)
-    radio_male.place(x = 150, y = 190)
+#    radio_male = tk.Radiobutton(window, text="Male", variable=radio, value=1)
+#    radio_male.place(x = 150, y = 190)
 
-    radio_female = tk.Radiobutton(window, text="Female", variable=radio, value=2)
-    radio_female.place(x = 150, y = 210)
+#    radio_female = tk.Radiobutton(window, text="Female", variable=radio, value=2)
+#    radio_female.place(x = 150, y = 210)
     show_button.place(x = 300, y = 200)
 
 def play():
@@ -34,6 +34,7 @@ def play():
 def close_window():
     window.destroy()
     import windowTwo
+
 
 start_button = tk.Button(window,text = "Start", command= show_input_field, activeforeground = "red",activebackground = "blue",pady=10,padx=20)
 exit_button = tk.Button(window,text = "Exit",command = close_window ,activeforeground = "red",activebackground = "blue",pady=10,padx=20)
