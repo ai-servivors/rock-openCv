@@ -2,7 +2,7 @@ import random
 import tkinter as tk
 
 windowTwo = tk.Tk()
-windowTwo.geometry("600x600")
+windowTwo.geometry("1366x768")
 windowTwo.title("Page 2")
 
 user_score = 0
