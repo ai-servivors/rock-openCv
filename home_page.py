@@ -39,7 +39,7 @@ def play() :
         label_message1 = tk.Label(text = 'Please Inter Your Name',
                                   font=('MALDINI', 15), bg='#2286FF')
         label_message1.pack()
-    else :
+    else:
         import windowTwo
         label_Name = tk.Label(text = f'Welcome {input_name.get()}',
                               font=('MALDINI', 15),  bg='#2286FF')
