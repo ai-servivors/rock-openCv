@@ -29,7 +29,7 @@ def get_time() :
 
 def show_input_field() :
     global input_name
-    radio = tk.IntVar()
+    # radio = tk.IntVar()
     name_label = tk.Label(window, text = "Name")
     name_label.place(x = 200, y = 400)
     input_name = tk.Entry(window, borderwidth = 4, width = 12)
@@ -49,6 +49,7 @@ def play() :
         label_message1 = tk.Label(text = 'Please Inter Your Name')
         label_message1.pack()
     else :
+        window.destroy()
         import windowTwo
         label_Name = tk.Label(text = f'Welcome {input_name.get()}')
         label_Name.pack()
@@ -57,7 +58,7 @@ def play() :
 
 def close_window() :
     window.destroy()
-    import windowTwo
+    # import windowTwo
 
 start_button = tk.Button(window, text = "Start", command = show_input_field)
 #start_button.grid(row = 40, column = 0, padx = 5)
