@@ -13,8 +13,8 @@ image_label.place(x = -2, y = -2, relwidth = 1, relheight = 1)
 
 def get_time() :
     string = strftime('%H:%M:%S %p')
-    label.config(text = string)
-    label.after(1000, get_time)
+    label_time.config(text = string)
+    label_time.after(1000, get_time)
 
 def show_input_field() :
     global input_name
@@ -65,18 +65,10 @@ exit_button = tk.Button(window, text = "Exit ",
 start_button.place(x = 160, y = 350)
 exit_button.place(x = 325, y = 350)
 
-label = tk.Label(window)
-label.pack()
-label = Label(window, font=('ds-digital', 15), foreground = 'black' )
-label.place(x = 421, y = 488)
+label_time = tk.Label(window)
+label_time.pack()
+label_time = Label(window, font=('ds-digital', 15), foreground = 'black' )
+label_time.place(x = 421, y = 488)
 get_time()
 window.mainloop()
-"""
-def resizer(e) :
-    global bg1, resizer_bg, new_bg
-    bg1 = Image.open("rocc.jpg")
-    resizer_bd = bg1.resize((e.width,e.height), Image.ANTIALIAS)
-    new_bg = ImageTk.PhotoImage(resizer_bd)
-    my_canvas.create_image(0, 0, image = new_bg, anchor='center')
-"""
-#window.bind('<Configure>', resizer)
+
