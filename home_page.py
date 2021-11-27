@@ -48,7 +48,7 @@ def play() :
     if not input_name.get() :
         label_message1 = tk.Label(text = 'Please Inter Your Name')
         label_message1.pack()
-    else :
+    else:
         import windowTwo
         label_Name = tk.Label(text = f'Welcome {input_name.get()}')
         label_Name.pack()
