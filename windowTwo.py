@@ -1,18 +1,9 @@
 import random
-from tkinter.ttk import *
-from PIL import ImageTk, Image
-
 import tkinter as tk
 
 windowTwo = tk.Tk()
-windowTwo.geometry("1900x770")
+windowTwo.geometry("1366x768")
 windowTwo.title("Page 2")
-
-
-bg1 = tk.PhotoImage(file = "sec1.png")
-image_label = Label(windowTwo, image = bg1)
-image_label.place(x = -2, y = -2, relwidth = 1, relheight = 1)
-
 
 user_score = 0
 computer_score = 0
