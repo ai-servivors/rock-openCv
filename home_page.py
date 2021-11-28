@@ -34,7 +34,7 @@ def show_input_field() :
     opencv_button = tk.Button(window, text="Play By Camera ",
                             font=('MALDINI', 12),
                             activebackground='#6AFFD6',
-                            bg='#2286FF')
+                            bg='#2286FF',command = play_camera)
     opencv_button.place(x=280, y=460)
 
 def play() :
@@ -46,10 +46,18 @@ def play() :
     else:
         window.destroy()
         import windowTwo
-        label_Name = tk.Label(text = f'Welcome {name}',
+       
 
-                              font=('MALDINI', 15),  bg='#2286FF')
-        label_Name.pack()
+def play_camera() :
+    global label_message1
+    global name
+    name = input_name.get()
+    if not name:
+        pass
+    else:
+        window.destroy()
+        import final_app
+
 
 
 def close_window() :

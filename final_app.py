@@ -1,22 +1,20 @@
 import cv2
 import numpy as np
 
-from tensorflow.keras.models import  load_model
+from tensorflow.keras.models import Model, load_model
 
-from random import choice
+from random import choice,shuffle
 from scipy import stats as st
 
 from collections import deque
 
+model = load_model("rps.h5")
 
-
-model = load_model("rps4.h5")
 
 def findout_winner(user_move, Computer_move):
 
     if user_move == Computer_move:
         return "Tie"
-
 
     elif user_move == "rock" and Computer_move == "scissor":
         return "User"
@@ -50,7 +48,6 @@ winner = findout_winner(user_move, computer_move)
 
 print("User Selected '{}' and computer selected '{}' , winner is: '{}' ".format(user_move, computer_move, winner))
 
-
 def show_winner(user_socre, computer_score):
     if user_score > computer_score:
         img = cv2.imread("images/youwin.jpg")
@@ -74,13 +71,31 @@ def show_winner(user_socre, computer_score):
     else:
         return False
 
+def display_computer_move(computer_move_name, frame):
+    icon = cv2.imread("images/{}.png".format(computer_move_name), 1)
+    icon = cv2.resize(icon, (224, 224))
+
+    roi = frame[0:224, 0:224]
+
+    mask = icon[:, :, -1]
+
+    mask = cv2.threshold(mask, 1, 255, cv2.THRESH_BINARY)[1]
+
+    icon_bgr = icon[:, :, :3]
 
 
+    img1_bg = cv2.bitwise_and(roi, roi, mask=cv2.bitwise_not(mask))
+
+    img2_fg = cv2.bitwise_and(icon_bgr, icon_bgr, mask=mask)
+
+    combined = cv2.add(img1_bg, img2_fg)
+
+    frame[0:224, 0:224] = combined
+
+    return frame
 
 
 cap = cv2.VideoCapture(0)
-
-
 box_size = 234
 width = int(cap.get(3))
 
@@ -91,7 +106,9 @@ final_user_move = "nothing"
 
 label_names = ['nothing', 'paper', 'rock', 'scissor']
 
+
 computer_score, user_score = 0, 0
+
 
 rect_color = (255, 0, 0)
 
@@ -116,13 +133,17 @@ while True:
 
     cv2.namedWindow("Rock Paper Scissors", cv2.WINDOW_NORMAL)
 
+
     roi = frame[5: box_size - 5, width - box_size + 5: width - 5]
 
     roi = np.array([roi]).astype('float64') / 255.0
 
     pred = model.predict(roi)
+
     move_code = np.argmax(pred[0])
+
     user_move = label_names[move_code]
+
     prob = np.max(pred[0])
 
     if prob >= confidence_threshold:
@@ -136,17 +157,15 @@ while True:
             print('Stats error')
             continue
 
-
         if final_user_move != "nothing" and hand_inside == False:
 
             hand_inside = True
+
             computer_move_name = choice(['rock', 'paper', 'scissor'])
             winner = findout_winner(final_user_move, computer_move_name)
-
-            #display_computer_move(computer_move_name, frame)
+            display_computer_move(computer_move_name, frame)
 
             total_attempts -= 1
-
 
             if winner == "Computer":
                 computer_score += 1
@@ -156,25 +175,24 @@ while True:
                 user_score += 1;
                 rect_color = (0, 250, 0)
 
-
             elif winner == "Tie":
                 rect_color = (255, 250, 255)
 
-            if total_attempts == 0:
+            if user_score == 5 or computer_score== 5 :
 
                 play_again = show_winner(user_score, computer_score)
 
                 if play_again:
                     user_score, computer_score, total_attempts = 0, 0, attempts
-
                 else:
                     break
 
-
+        elif final_user_move != "nothing" and hand_inside == True:
+            pass
+            display_computer_move(computer_move_name, frame)
         elif final_user_move == 'nothing':
             hand_inside = False
             rect_color = (255, 0, 0)
-
 
     cv2.putText(frame, "Your Move: " + final_user_move,
                 (420, 270), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv2.LINE_AA)
@@ -187,7 +205,7 @@ while True:
     cv2.putText(frame, "Computer Score: " + str(computer_score),
                 (2, 300), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv2.LINE_AA)
 
-    cv2.putText(frame, "Attempts left: {}".format(total_attempts), (190, 400), cv2.FONT_HERSHEY_COMPLEX, 0.7,
+    cv2.putText(frame, "Keep Going only  {} Points To win".format(5-user_score), (100, 400), cv2.FONT_HERSHEY_COMPLEX, 0.7,
                 (100, 2, 255), 1, cv2.LINE_AA)
 
     cv2.rectangle(frame, (width - box_size, 0), (width, box_size), rect_color, 2)

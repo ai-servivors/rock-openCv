@@ -158,9 +158,8 @@ def go():
 
 def back_window() :
     windowTwo.destroy()
-    from home_page import window
 
-    window.destroy()
+
     import home_page
 
 
