@@ -24,14 +24,20 @@ def show_input_field() :
                           bg='#2286FF',
                           )
     name_label.place(x = 160, y = 415)
-    input_name = tk.Entry(window, borderwidth = 4, width = 12)
+    input_name = tk.Entry(window, borderwidth = 4, width = 20)
     input_name.place(x = 230, y = 417)
-    show_button = tk.Button(window, text = "Play",
-                            font=('MALDINI', 15),
+    Play_button = tk.Button(window, text = "Play By Mouse",
+                            font=('MALDINI', 12),
                             activebackground='#6AFFD6',
                             bg='#2286FF',
                             command = play)
-    show_button.place(x = 330, y = 415)
+    Play_button.place(x = 150, y = 460)
+    opencv_button = tk.Button(window, text="Play By Camera ",
+                            font=('MALDINI', 12),
+                            activebackground='#6AFFD6',
+                            bg='#2286FF')
+    opencv_button.place(x=280, y=460)
+
 
 def play() :
     global label_message1
@@ -39,7 +45,7 @@ def play() :
         label_message1 = tk.Label(text = 'Please Inter Your Name',
                                   font=('MALDINI', 15), bg='#2286FF')
         label_message1.pack()
-    else :
+    else:
         import windowTwo
         label_Name = tk.Label(text = f'Welcome {input_name.get()}',
                               font=('MALDINI', 15),  bg='#2286FF')
@@ -49,7 +55,7 @@ def play() :
 
 def close_window() :
     window.destroy()
-
+    import windowTwo
 start_button = tk.Button(window, text = "Start",
                          font = ('MALDINI', 15),
                          activebackground = '#6AFFD6',
@@ -65,7 +71,15 @@ exit_button = tk.Button(window, text = "Exit ",
 start_button.place(x = 160, y = 350)
 exit_button.place(x = 325, y = 350)
 
+<<<<<<< HEAD
 label_time = Label(window, font=('ds-digital', 15), foreground = 'black' )
 label_time.place(x = 421, y = 488)
 get_time()
 window.mainloop()
+=======
+
+label_time = Label(window, font=('ds-digital', 15), foreground = 'black' )
+label_time.place(x = 421, y = 488)
+get_time()
+window.mainloop()
+>>>>>>> f59df4aff75fc84061ea135609b0374f29434efb
