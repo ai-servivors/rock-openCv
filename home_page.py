@@ -55,7 +55,7 @@ def play() :
 
 def close_window() :
     window.destroy()
-    import windowTwo
+    # import windowTwo
 start_button = tk.Button(window, text = "Start",
                          font = ('MALDINI', 15),
                          activebackground = '#6AFFD6',
