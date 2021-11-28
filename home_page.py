@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter.ttk import *
-from PIL import ImageTk, Image
 from time import strftime
 
 window = tk.Tk()
@@ -18,7 +17,6 @@ def get_time() :
 
 def show_input_field() :
     global input_name
-    radio = tk.IntVar()
     name_label = tk.Label(window, text = "Name", font=('MALDINI', 15),
                           activebackground='#6AFFD6',
                           bg='#2286FF',
@@ -32,22 +30,26 @@ def show_input_field() :
                             bg='#2286FF',
                             command = play)
     Play_button.place(x = 150, y = 460)
+
     opencv_button = tk.Button(window, text="Play By Camera ",
                             font=('MALDINI', 12),
                             activebackground='#6AFFD6',
                             bg='#2286FF')
     opencv_button.place(x=280, y=460)
 
-
 def play() :
     global label_message1
-    if not input_name.get() :
+    global name
+    name = input_name.get()
+    if not name :
         label_message1 = tk.Label(text = 'Please Inter Your Name',
                                   font=('MALDINI', 15), bg='#2286FF')
         label_message1.pack()
     else:
+        window.destroy()
         import windowTwo
-        label_Name = tk.Label(text = f'Welcome {input_name.get()}',
+        label_Name = tk.Label(text = f'Welcome {name}',
+
                               font=('MALDINI', 15),  bg='#2286FF')
         label_Name.pack()
         if label_message1 is not None :
@@ -56,12 +58,13 @@ def play() :
 def close_window() :
     window.destroy()
     import windowTwo
+
 start_button = tk.Button(window, text = "Start",
                          font = ('MALDINI', 15),
                          activebackground = '#6AFFD6',
                          bg = '#2286FF',
                          command = show_input_field)
-#3463FF
+
 exit_button = tk.Button(window, text = "Exit ",
                         activebackground='#6AFFD6',
                         bg='#2286FF',
@@ -70,7 +73,6 @@ exit_button = tk.Button(window, text = "Exit ",
 
 start_button.place(x = 160, y = 350)
 exit_button.place(x = 325, y = 350)
-
 
 label_time = Label(window, font=('ds-digital', 15), foreground = 'black' )
 label_time.place(x = 421, y = 488)
