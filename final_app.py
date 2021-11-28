@@ -34,19 +34,6 @@ def findout_winner(user_move, Computer_move):
     elif user_move == "paper" and Computer_move == "scissor":
         return "Computer"
 
-user_move = 'paper'
-computer_move = choice(['rock', 'paper', 'scissor'])
-
-winner = findout_winner(user_move, computer_move)
-
-print("User Selected '{}' and computer selected '{}' , winner is: '{}' ".format(user_move, computer_move, winner))
-
-user_move = 'paper'
-computer_move = choice(['rock', 'paper', 'scissor'])
-
-winner = findout_winner(user_move, computer_move)
-
-print("User Selected '{}' and computer selected '{}' , winner is: '{}' ".format(user_move, computer_move, winner))
 
 def show_winner(user_socre, computer_score):
     if user_score > computer_score:
