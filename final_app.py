@@ -50,16 +50,16 @@ print("User Selected '{}' and computer selected '{}' , winner is: '{}' ".format(
 
 def show_winner(user_socre, computer_score):
     if user_score > computer_score:
-        img = cv2.imread("images/youwin.jpg")
+        img = cv2.imread("images/youwin.png")
 
     elif user_score < computer_score:
-        img = cv2.imread("images/comwins.jpg")
+        img = cv2.imread("images/youlose.png")
 
     else:
         img = cv2.imread("images/draw.jpg")
 
     cv2.putText(img, "Press 'ENTER' to play again, else exit",
-                (150, 530), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 255), 3, cv2.LINE_AA)
+                (100, 600), cv2.FONT_HERSHEY_COMPLEX, 0.5, (255, 255, 255), 1, cv2.LINE_AA)
 
     cv2.imshow("Rock Paper Scissors", img)
 
@@ -96,6 +96,7 @@ def display_computer_move(computer_move_name, frame):
 
 
 cap = cv2.VideoCapture(0)
+
 box_size = 234
 width = int(cap.get(3))
 
@@ -145,6 +146,7 @@ while True:
     user_move = label_names[move_code]
 
     prob = np.max(pred[0])
+
 
     if prob >= confidence_threshold:
 
@@ -205,8 +207,8 @@ while True:
     cv2.putText(frame, "Computer Score: " + str(computer_score),
                 (2, 300), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv2.LINE_AA)
 
-    cv2.putText(frame, "Keep Going only  {} Points To win".format(5-user_score), (100, 400), cv2.FONT_HERSHEY_COMPLEX, 0.7,
-                (100, 2, 255), 1, cv2.LINE_AA)
+    cv2.putText(frame, "Get 5 Points To Win!".format(5-user_score), (150, 400), cv2.FONT_HERSHEY_COMPLEX, 0.7,
+                (140, 2, 255), 1, cv2.LINE_AA)
 
     cv2.rectangle(frame, (width - box_size, 0), (width, box_size), rect_color, 2)
 

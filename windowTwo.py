@@ -6,7 +6,7 @@ windowTwo = tk.Tk()
 windowTwo.geometry("1920x1080")
 windowTwo.title("Page 2")
 
-bg = tk.PhotoImage(file = "sec.png")
+bg = tk.PhotoImage(file = "secondpage.png")
 image_label = Label(windowTwo, image = bg)
 image_label.place(x = -2, y = -2)
 
@@ -31,7 +31,7 @@ def go():
         global result
         result=tk.Label(windowTwo,font=("MALDINI", 15),
                         activebackground='#6AFFD6',
-                        bg='red',
+                        bg='#3D84B8',
                         text=f" Opps!! Both players selected {options.get()}. It's a tie! ")
         result.place(x=650, y=210)
     elif options.get() == "rock":
@@ -39,7 +39,7 @@ def go():
             user_score+=1
             result=tk.Label(windowTwo,font=("MALDINI", 15),
                             activebackground='#6AFFD6',
-                            bg='#2286FF',
+                            bg='#3D84B8',
                             text="Rock smashes scissors! You win!")
             result.place(x=650, y=210)
 
@@ -47,7 +47,7 @@ def go():
             computer_score += 1
             result=tk.Label(windowTwo,font=("MALDINI", 15),
                             activebackground='#6AFFD6',
-                            bg='#2286FF',
+                            bg='#3D84B8',
                             text=" Paper covers rock! You lose. ")
 
             result.place(x=650, y=210)
@@ -56,7 +56,7 @@ def go():
         if computer_action == "rock":
             result=tk.Label(windowTwo,font=("MALDINI", 15),
                             activebackground='#6AFFD6',
-                            bg='#2286FF',
+                            bg='#3D84B8',
                             text=" Paper covers rock! You win! ")
             user_score += 1
             result.place(x=650, y=210)
@@ -64,14 +64,14 @@ def go():
             computer_score += 1
             result=tk.Label(windowTwo,font=("MADLINI", 15),
                             activebackground='#6AFFD6',
-                            bg='#2286FF',
+                            bg='#3D84B8',
                             text=" Scissors cuts paper! You lose. ")
             result.place(x=650, y=210)
     elif options.get() == "scissors":
         if computer_action == "paper":
             result=tk.Label(windowTwo,font=("MALDINI", 15),
                             activebackground='#6AFFD6',
-                            bg='#2286FF',
+                            bg='#3D84B8',
                             text=" Scissors cuts paper! You win! ")
             user_score += 1
             result.place(x=650, y=210)
@@ -80,7 +80,7 @@ def go():
             computer_score += 1
             result=tk.Label(windowTwo,font=("MALDINI", 15),
                             activebackground='#6AFFD6',
-                            bg='#2286FF',
+                            bg='#3D84B8',
                             text=" Rock smashes scissors! You lose. ")
             result.place(x=650, y=210)
 
@@ -88,9 +88,9 @@ def go():
     if user_score == 5 or computer_score == 5 :
         result4 = tk.Label(windowTwo,font=("MALDINI", 20),
                            activebackground='#6AFFD6',
-                           bg='#2286FF',
+                           bg='#3D84B8',
                            text=" Game Finished Wanna play again? ")
-        result4.place(x=470, y=500)
+        result4.place(x=500, y=500)
         def play_again() :
             # result7 = tk.Label(windowTwo,text="", pady=20, padx=80)
             # result7.place(x=700, y=410)
@@ -107,7 +107,7 @@ def go():
             result4.destroy()
             result3 = tk.Label(windowTwo, font=("MALDINI", 15),
                                activebackground='#6AFFD6',
-                               bg='#2286FF',
+                               bg='#3D84B8',
                                text=f"  Your Score  {user_score}  :  Computer Score {computer_score}  ")
             result3.place(x=640, y=0)
 
@@ -140,12 +140,12 @@ def go():
     if options.get()!="Selected":
      action = tk.Label(windowTwo ,font=("MALDINI", 15),
                        activebackground='#6AFFD6',
-                       bg='#2286FF',
+                       bg='#3D84B8',
                        text=f"\nYou chose {options.get()}, computer chose {computer_action}.\n")
-     action.place(x=650, y=120)
+     action.place(x=600, y=120)
      result3 = tk.Label(windowTwo, font=("MALDINI", 15),
                         activebackground='#6AFFD6',
-                        bg='#2286FF',
+                        bg='#3D84B8',
                         text=f"Your Score  {user_score}  :  Computer Score {computer_score} ")
      result3.place(x=640, y=0)
      show_button.destroy()
@@ -154,7 +154,7 @@ def go():
                               bg='#2286FF',
                               font=('MALDINI', 15),
                               pady=10, padx=20)
-     again_button.place(x=900, y=420)
+     again_button.place(x=690, y=420)
 
 def back_window() :
     windowTwo.destroy()
@@ -169,7 +169,7 @@ back_button = tk.Button(windowTwo, text = "Back ",
                         font = ('MALDINI', 15),
                         command = back_window)
 
-back_button.place(x = 1200, y = 550)
+back_button.place(x = 0, y = 0)
 
 options = tk.StringVar(windowTwo)
 options.set("Selected") # default value
@@ -182,13 +182,12 @@ user_action.place(x=730, y=370)
 please_input = tk.Label(windowTwo, text="Please Enter You Choice",
                         font=("MALDINI", 15),
                         activebackground='#6AFFD6',
-                        bg='#2286FF',
+                        bg='#3D84B8',
                         )
-please_input.place(x=710, y=320)
+please_input.place(x=670, y=320)
 
 show_button = tk.Button(windowTwo,text = " Go ", command= go,
-                        activebackground='#2286FF',
-                        bg='#6AFFD6',
+                        activebackground='#2286FF',bg='#2286FF',
                         font=('MALDINI', 15),
                         pady = 10, padx = 20)
 
