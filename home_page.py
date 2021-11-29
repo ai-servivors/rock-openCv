@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter.ttk import *
 from time import strftime
 
+
 window = tk.Tk()
 window.geometry("511x513")
 window.resizable(0,0)
@@ -37,6 +38,8 @@ def show_input_field() :
                             bg='#2286FF',command = play_camera)
     opencv_button.place(x=280, y=460)
 
+
+
 def play() :
     global label_message1
     global name
@@ -46,7 +49,6 @@ def play() :
     else:
         window.destroy()
         import windowTwo
-       
 
 def play_camera() :
     global label_message1
@@ -58,11 +60,9 @@ def play_camera() :
         window.destroy()
         import final_app
 
-
-
 def close_window() :
     window.destroy()
-    import windowTwo
+
 start_button = tk.Button(window, text = "Start",
                          font = ('MALDINI', 15),
                          activebackground = '#6AFFD6',
