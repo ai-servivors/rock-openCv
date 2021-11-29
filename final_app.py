@@ -147,6 +147,7 @@ while True:
                 rect_color = (0, 0, 255)
 
             elif winner == "User":
+
                 user_score += 1
                 rect_color = (0, 250, 0)
 
@@ -154,6 +155,8 @@ while True:
                 rect_color = (255, 250, 255)
 
             if user_score == 5 or computer_score== 5 :
+                import time
+                time.sleep(2)
 
                 play_again = show_winner(user_score, computer_score)
 
@@ -163,7 +166,7 @@ while True:
                     break
 
         elif final_user_move != "nothing" and hand_inside == True:
-            pass
+
             display_computer_move(computer_move_name, frame)
         elif final_user_move == 'nothing':
             hand_inside = False
