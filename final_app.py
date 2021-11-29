@@ -1,17 +1,6 @@
 import cv2
 import numpy as np
-from playsound import playsound
-###########################
-######### SOUND ###########
-###########################
-
-## at first install pip install playsound==1.2.2
-## write this code :
-        # playsound('testtSound.mp3')
-
-###########################
-######### SOUND ###########
-###########################
+import time
 from tensorflow.keras.models import Model, load_model
 
 from random import choice,shuffle
@@ -45,6 +34,7 @@ def findout_winner(user_move, Computer_move):
         return "Computer"
 
 def show_winner(user_socre, computer_score):
+
     if user_socre > computer_score:
         img = cv2.imread("images/youwin.png")
 
@@ -110,7 +100,8 @@ confidence_threshold = 0.70
 smooth_factor = 5
 
 de = deque(['nothing'] * 5, maxlen=smooth_factor)
-
+wait=False
+start_time = time.time()
 while True:
 
     ret, frame = cap.read()
@@ -166,15 +157,21 @@ while True:
                 rect_color = (255, 250, 255)
 
             if user_score == 5 or computer_score== 5 :
-                import time
-                time.sleep(2)
 
-                play_again = show_winner(user_score, computer_score)
 
-                if play_again:
-                    user_score, computer_score = 0, 0
-                else:
-                    break
+                if not wait:
+
+                    start_time = time.time()
+                wait = True
+
+        if (time.time() - start_time) > 2 and (user_score == 5 or computer_score== 5):
+
+            play_again = show_winner(user_score, computer_score)
+
+            if play_again:
+                user_score, computer_score = 0, 0
+            else:
+                break
 
         elif final_user_move != "nothing" and hand_inside == True:
 
