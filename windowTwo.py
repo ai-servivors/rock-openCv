@@ -144,6 +144,7 @@ def go() :
         result4 = tk.Label(windowTwo, font=("MALDINI", 20),
                                 activebackground='#6AFFD6',
                                 bg='#2fa0e4',
+
                                 text=" Game Finished Wanna play again? ")
         result4.place(x=550, y=500)
         global play_again_button_yes, play_again_button_no
