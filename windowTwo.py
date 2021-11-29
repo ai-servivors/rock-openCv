@@ -84,32 +84,46 @@ def go():
                             text=" Rock smashes scissors! You lose. ")
             result.place(x=650, y=210)
 
-    # show_button.destroy()
-    if user_score == 5 or computer_score == 5 :
+    def play_again():
+
+        dest()
+
+        play_again_button_yes.destroy()
+        play_again_button_no.destroy()
+
+        global user_score
+        user_score = 0
+        global computer_score
+        computer_score = 0
+        result4.destroy()
+        result3 = tk.Label(windowTwo, font=("MALDINI", 15),
+                           activebackground='#6AFFD6',
+                           bg='#3D84B8',
+                           text=f"  Your Score  {user_score}  :  Computer Score {computer_score}  ")
+        result3.place(x=640, y=0)
+
+    def dest():
+            again_button.destroy()
+            global show_button
+            global result
+            result.destroy()
+            action.destroy()
+            # user_action.delete(0, 10)
+            show_button = tk.Button(windowTwo, text=" Go ", command=go,
+                                    activebackground='#6AFFD6',
+                                    bg='#2286FF',
+                                    font=('MALDINI', 15),
+                                    pady=10, padx=20)
+            show_button.place(x=900, y=360)
+    if user_score == 2 or computer_score == 2 :
+
+
         result4 = tk.Label(windowTwo,font=("MALDINI", 20),
                            activebackground='#6AFFD6',
                            bg='#3D84B8',
                            text=" Game Finished Wanna play again? ")
-        result4.place(x=500, y=500)
-        def play_again() :
-            # result7 = tk.Label(windowTwo,text="", pady=20, padx=80)
-            # result7.place(x=700, y=410)
-            # again_button.destroy()
-            dest()
-            again_button.destroy()
-            play_again_button_yes.destroy()
-            play_again_button_no.destroy()
+        result4.place(x=550, y=500)
 
-            global user_score
-            user_score = 0
-            global computer_score
-            computer_score = 0
-            result4.destroy()
-            result3 = tk.Label(windowTwo, font=("MALDINI", 15),
-                               activebackground='#6AFFD6',
-                               bg='#3D84B8',
-                               text=f"  Your Score  {user_score}  :  Computer Score {computer_score}  ")
-            result3.place(x=640, y=0)
 
         play_again_button_yes = tk.Button(windowTwo, text=" Yes ",command = play_again,
                                           font=("MALDINI", 15),
@@ -123,19 +137,7 @@ def go():
                                          pady=10, padx=20)
         play_again_button_yes.place(x=650, y=580)
         play_again_button_no.place(x=800, y=580)
-    def dest():
-     again_button.destroy()
-     global show_button
-     global result
-     result.destroy()
-     action.destroy()
-     # user_action.delete(0, 10)
-     show_button = tk.Button(windowTwo, text=" Go ", command=go,
-                             activebackground='#6AFFD6',
-                             bg='#2286FF',
-                             font=('MALDINI', 15),
-                             pady=10,padx=20)
-     show_button.place(x=900, y=360)
+
 
     if options.get()!="Selected":
      action = tk.Label(windowTwo ,font=("MALDINI", 15),
@@ -158,8 +160,6 @@ def go():
 
 def back_window() :
     windowTwo.destroy()
-
-
     import home_page
 
 
@@ -172,18 +172,17 @@ back_button = tk.Button(windowTwo, text = "Back ",
 back_button.place(x = 0, y = 0)
 
 options = tk.StringVar(windowTwo)
-options.set("Selected") # default value
+options.set("Selected")
 
 user_action =tk.OptionMenu(windowTwo, options, "rock","paper", "scissors")
 user_action.place(x=730, y=370)
-# user_action = tk.Entry(windowTwo,borderwidth=5)
-# user_action.place(x=730, y=350)
-# name_label = tk.Label(windowTwo, text="Choice").place(x=680, y=350)
+
 please_input = tk.Label(windowTwo, text="Please Enter You Choice",
                         font=("MALDINI", 15),
                         activebackground='#6AFFD6',
                         bg='#3D84B8',
                         )
+
 please_input.place(x=670, y=320)
 
 show_button = tk.Button(windowTwo,text = " Go ", command= go,
@@ -192,3 +191,6 @@ show_button = tk.Button(windowTwo,text = " Go ", command= go,
                         pady = 10, padx = 20)
 
 show_button.place(x=900, y=360)
+
+
+window.mainloop()

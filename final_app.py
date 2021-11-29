@@ -10,7 +10,6 @@ from collections import deque
 
 model = load_model("rps.h5")
 
-
 def findout_winner(user_move, Computer_move):
 
     if user_move == Computer_move:
@@ -34,12 +33,11 @@ def findout_winner(user_move, Computer_move):
     elif user_move == "paper" and Computer_move == "scissor":
         return "Computer"
 
-
 def show_winner(user_socre, computer_score):
-    if user_score > computer_score:
+    if user_socre > computer_score:
         img = cv2.imread("images/youwin.png")
 
-    elif user_score < computer_score:
+    elif user_socre < computer_score:
         img = cv2.imread("images/youlose.png")
 
     else:
@@ -59,7 +57,7 @@ def show_winner(user_socre, computer_score):
         return False
 
 def display_computer_move(computer_move_name, frame):
-    icon = cv2.imread("images/{}.png".format(computer_move_name), 1)
+    icon = cv2.imread("images/{}.png".format(computer_move_name))
     icon = cv2.resize(icon, (224, 224))
 
     roi = frame[0:224, 0:224]
@@ -69,7 +67,6 @@ def display_computer_move(computer_move_name, frame):
     mask = cv2.threshold(mask, 1, 255, cv2.THRESH_BINARY)[1]
 
     icon_bgr = icon[:, :, :3]
-
 
     img1_bg = cv2.bitwise_and(roi, roi, mask=cv2.bitwise_not(mask))
 
@@ -81,28 +78,21 @@ def display_computer_move(computer_move_name, frame):
 
     return frame
 
-
 cap = cv2.VideoCapture(0)
 
 box_size = 234
 width = int(cap.get(3))
-
-attempts = 5
 
 computer_move_name = "nothing"
 final_user_move = "nothing"
 
 label_names = ['nothing', 'paper', 'rock', 'scissor']
 
-
 computer_score, user_score = 0, 0
-
 
 rect_color = (255, 0, 0)
 
 hand_inside = False
-
-total_attempts = attempts
 
 confidence_threshold = 0.70
 
@@ -121,7 +111,6 @@ while True:
 
     cv2.namedWindow("Rock Paper Scissors", cv2.WINDOW_NORMAL)
 
-
     roi = frame[5: box_size - 5, width - box_size + 5: width - 5]
 
     roi = np.array([roi]).astype('float64') / 255.0
@@ -133,7 +122,6 @@ while True:
     user_move = label_names[move_code]
 
     prob = np.max(pred[0])
-
 
     if prob >= confidence_threshold:
 
@@ -154,14 +142,12 @@ while True:
             winner = findout_winner(final_user_move, computer_move_name)
             display_computer_move(computer_move_name, frame)
 
-            total_attempts -= 1
-
             if winner == "Computer":
                 computer_score += 1
                 rect_color = (0, 0, 255)
 
             elif winner == "User":
-                user_score += 1;
+                user_score += 1
                 rect_color = (0, 250, 0)
 
             elif winner == "Tie":
@@ -172,7 +158,7 @@ while True:
                 play_again = show_winner(user_score, computer_score)
 
                 if play_again:
-                    user_score, computer_score, total_attempts = 0, 0, attempts
+                    user_score, computer_score = 0, 0
                 else:
                     break
 
@@ -182,7 +168,6 @@ while True:
         elif final_user_move == 'nothing':
             hand_inside = False
             rect_color = (255, 0, 0)
-
     cv2.putText(frame, "Your Move: " + final_user_move,
                 (420, 270), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv2.LINE_AA)
 
@@ -194,8 +179,8 @@ while True:
     cv2.putText(frame, "Computer Score: " + str(computer_score),
                 (2, 300), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv2.LINE_AA)
 
-    cv2.putText(frame, "Get 5 Points To Win!".format(5-user_score), (150, 400), cv2.FONT_HERSHEY_COMPLEX, 0.7,
-                (140, 2, 255), 1, cv2.LINE_AA)
+    cv2.putText(frame, "Get 5 Points To Win!", (160, 400), cv2.FONT_HERSHEY_COMPLEX, 0.7,
+                (255, 255, 255), 1, cv2.LINE_AA)
 
     cv2.rectangle(frame, (width - box_size, 0), (width, box_size), rect_color, 2)
 
