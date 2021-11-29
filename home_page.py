@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter.ttk import *
 from time import strftime
-
+from playsound import playsound
 
 window = tk.Tk()
 window.geometry("511x513")
@@ -18,6 +18,7 @@ def get_time() :
 
 def show_input_field() :
     global input_name
+    playsound('BUTTON.wav')
     name_label = tk.Label(window, text = "Name", font=('MALDINI', 15),
                           activebackground='#6AFFD6',
                           bg='#2286FF',
@@ -43,6 +44,7 @@ def show_input_field() :
 def play() :
     global label_message1
     global name
+    playsound('BUTTON.wav')
     name = input_name.get()
     if not name :
        pass
@@ -51,6 +53,7 @@ def play() :
         import windowTwo
 
 def play_camera() :
+    playsound('BUTTON.wav')
     global label_message1
     global name
     name = input_name.get()
@@ -61,7 +64,8 @@ def play_camera() :
         import final_app
 
 def close_window() :
-    window.destroy()
+#    window.destroy()
+    playsound('BUTTON.wav')
 
 start_button = tk.Button(window, text = "Start",
                          font = ('MALDINI', 15),

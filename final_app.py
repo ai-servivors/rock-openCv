@@ -156,7 +156,7 @@ while True:
             elif winner == "Tie":
                 rect_color = (255, 250, 255)
 
-            if user_score == 2 or computer_score== 2 :
+            if user_score == 5 or computer_score== 5 :
 
 
                 if not wait:
@@ -164,7 +164,7 @@ while True:
                     start_time = time.time()
                 wait = True
 
-        if (time.time() - start_time) > 5 and (user_score == 2 or computer_score == 2):
+        if (time.time() - start_time) > 2 and (user_score == 5 or computer_score== 5):
 
             play_again = show_winner(user_score, computer_score)
 
