@@ -1,6 +1,17 @@
 import cv2
 import numpy as np
+from playsound import playsound
+###########################
+######### SOUND ###########
+###########################
 
+## at first install pip install playsound==1.2.2
+## write this code :
+        # playsound('testtSound.mp3')
+
+###########################
+######### SOUND ###########
+###########################
 from tensorflow.keras.models import Model, load_model
 
 from random import choice,shuffle
