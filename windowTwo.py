@@ -5,7 +5,7 @@ from playsound import playsound
 windowTwo = tk.Tk()
 windowTwo.geometry("1920x1080")
 windowTwo.title("Page 2")
-bg = tk.PhotoImage(file = "secondpage.png")
+bg = tk.PhotoImage(file = "assets/secondpage.png")
 image_label = Label(windowTwo, image = bg)
 image_label.place(x = -2, y = -2)
 
@@ -65,7 +65,7 @@ def go() :
                               bg='#2fa0e4',
                               text="Rock smashes scissors! You win!")
             result.place(x=650, y=210)
-            playsound('win1.mp3', block=False)
+            playsound('sounds/win1.mp3', block=False)
         elif computer_action == "lizard":
             user_score += 1
             result = tk.Label(windowTwo, font=("MALDINI", 15),
@@ -73,7 +73,7 @@ def go() :
                               bg='#2fa0e4',
                               text="Rock smashes lizard! You win!")
             result.place(x=650, y=210)
-            playsound('win1.mp3', block=False)
+            playsound('sounds/win1.mp3', block=False)
         elif computer_action == "spock":
             computer_score += 1
             result = tk.Label(windowTwo, font=("MALDINI", 15),
@@ -99,7 +99,7 @@ def go() :
                               text=" Paper covers rock! You win! ")
             user_score += 1
             result.place(x=650, y=210)
-            playsound('win1.mp3', block=False)
+            playsound('sounds/win1.mp3', block=False)
         elif computer_action == "spock":
             result = tk.Label(windowTwo, font=("MALDINI", 15),
                               activebackground='#6AFFD6',
@@ -107,7 +107,7 @@ def go() :
                               text=" Paper covers spock! You win! ")
             user_score += 1
             result.place(x=650, y=210)
-            playsound('win1.mp3', block=False)
+            playsound('sounds/win1.mp3', block=False)
         elif computer_action == "lizard":
             computer_score += 1
             result = tk.Label(windowTwo, font = ("MALDINI", 15),
@@ -131,7 +131,7 @@ def go() :
                               text = " Scissors cuts paper! You win! ")
             user_score += 1
             result.place(x=650, y=210)
-            playsound('win1.mp3', block=False)
+            playsound('sounds/win1.mp3', block=False)
         elif computer_action == "lizard":
             result = tk.Label(windowTwo, font=("MALDINI", 15),
                               activebackground='#6AFFD6',
@@ -139,7 +139,7 @@ def go() :
                               text=" Scissors cuts lizard! You win! ")
             user_score += 1
             result.place(x=650, y=210)
-            playsound('win1.mp3', block=False)
+            playsound('sounds/win1.mp3', block=False)
         elif computer_action == "spock":
             computer_score += 1
             result = tk.Label(windowTwo, font=("MALDINI", 15),
@@ -164,7 +164,7 @@ def go() :
                               text=" spock covers rock! You win! ")
             user_score += 1
             result.place(x=650, y=210)
-            playsound('win1.mp3', block=False)
+            playsound('sounds/win1.mp3', block=False)
         elif computer_action == "scissors":
             result = tk.Label(windowTwo, font=("MALDINI", 15),
                               activebackground='#6AFFD6',
@@ -172,7 +172,7 @@ def go() :
                               text=" spock smashes  scissors! You win! ")
             user_score += 1
             result.place(x=650, y=210)
-            playsound('win1.mp3', block=False)
+            playsound('sounds/win1.mp3', block=False)
         elif computer_action == "paper":
             computer_score += 1
             result = tk.Label(windowTwo, font=("MALDINI", 15),
@@ -197,7 +197,7 @@ def go() :
                               text=" lizard eats paper! You win! ")
             user_score += 1
             result.place(x=650, y=210)
-            playsound('win1.mp3', block=False)
+            playsound('sounds/win1.mp3', block=False)
         elif computer_action == "spock":
             result = tk.Label(windowTwo, font=("MALDINI", 15),
                               activebackground='#6AFFD6',
@@ -205,7 +205,7 @@ def go() :
                               text=" lizard eats spock! You win! ")
             user_score += 1
             result.place(x=650, y=210)
-            playsound('win1.mp3', block=False)
+            playsound('sounds/win1.mp3', block=False)
         elif computer_action == "rock":
             computer_score += 1
             result = tk.Label(windowTwo, font=("MALDINI", 15),
@@ -261,9 +261,9 @@ def go() :
     ######## GAME FIINISH ########
     if user_score == 5 or computer_score == 5 :
         if user_score == 5:
-           playsound('win.mp3', block=False)
+           playsound('sounds/win.mp3', block=False)
         if computer_score == 5:
-            playsound('lost.mp3', block=False)
+            playsound('sounds/lost.mp3', block=False)
         result4 = tk.Label(windowTwo, font=("MALDINI", 20),
                                 activebackground='#6AFFD6',
                                 bg='#2fa0e4',
