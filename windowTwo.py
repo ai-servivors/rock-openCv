@@ -81,6 +81,7 @@ def go() :
                               bg='#2fa0e4',
                               text=" spock covers rock! You lose. ")
             result.place(x=650, y=210)
+            playsound('sounds/lost1.wav', block=False)
 
         else:
                computer_score += 1
@@ -89,6 +90,7 @@ def go() :
                           bg='#2fa0e4',
                           text=" Paper covers rock! You lose. ")
                result.place(x=650, y=210)
+               playsound('sounds/lost1.wav', block=False)
 
 
     elif options.get() == "paper":
@@ -115,6 +117,7 @@ def go() :
                               bg='#2fa0e4',
                               text=" lizard eats paper! You lose. ")
             result.place(x=650, y=210)
+            playsound('sounds/lost1.wav', block=False)
 
         else:
             computer_score += 1
@@ -123,6 +126,7 @@ def go() :
                           bg='#2fa0e4',
                           text=" Scissors cuts paper! You lose. ")
             result.place(x=650, y=210)
+            playsound('sounds/lost1.wav', block=False)
     elif options.get() == "scissors":
         if computer_action == "paper":
             result = tk.Label(windowTwo, font = ("MALDINI", 15),
@@ -147,6 +151,7 @@ def go() :
                               bg='#2fa0e4',
                               text=" spock smashes scissors! You lose. ")
             result.place(x=650, y=210)
+            playsound('sounds/lost1.wav', block=False)
         else:
            computer_score += 1
            result = tk.Label(windowTwo, font=("MALDINI", 15),
@@ -154,6 +159,7 @@ def go() :
                           bg='#2fa0e4',
                           text=" Rock smashes scissors! You lose. ")
            result.place(x=650, y=210)
+           playsound('sounds/lost1.wav', block=False)
 
 
     elif options.get() == "spock":
@@ -180,6 +186,7 @@ def go() :
                               bg='#2fa0e4',
                               text=" paper covers spock! You lose. ")
             result.place(x=650, y=210)
+            playsound('sounds/lost1.wav', block=False)
 
         else:
            computer_score += 1
@@ -188,6 +195,7 @@ def go() :
                           bg='#2fa0e4',
                           text=" lizard eats spock! You lose. ")
            result.place(x=650, y=210)
+           playsound('sounds/lost1.wav', block=False)
 
     elif options.get() == "lizard":
         if computer_action == "paper":
@@ -213,6 +221,7 @@ def go() :
                               bg='#2fa0e4',
                               text=" Rock smashes lizard! You lose. ")
             result.place(x=650, y=210)
+            playsound('sounds/lost1.wav', block=False)
         else:
            computer_score += 1
            result = tk.Label(windowTwo, font=("MALDINI", 15),
@@ -220,6 +229,7 @@ def go() :
                           bg='#2fa0e4',
                           text=" scissors cuts lizard! You lose. ")
            result.place(x=650, y=210)
+           playsound('sounds/lost1.wav', block=False)
     ###########################
     ######## YES FUNC #########
     def play_again():
@@ -235,7 +245,7 @@ def go() :
                            activebackground='#6AFFD6',
                            bg='#2fa0e4',
                            text=f"  Your Score  {user_score}  :  Computer Score {computer_score}  ")
-        result3.place(x=640, y=0)
+        result3.place(x=635, y=0)
     ############################
     ########## SELECT ##########
     if options.get() != "Selected" :
@@ -294,7 +304,7 @@ back_button = tk.Button(windowTwo, text = "Back ",
                         bg='#2286FF',
                         font = ('MALDINI', 15),
                         command = back_window)
-back_button.place(x = 0, y = 0)
+back_button.place(x = 5, y = 5)
 #############################
 ############ GO #############
 show_button = tk.Button(windowTwo,text = " Go ", command = go,
