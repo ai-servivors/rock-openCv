@@ -7,7 +7,8 @@ from random import choice,shuffle
 from scipy import stats as st
 
 from collections import deque
-from playsound import playsound
+from playsound import
+
 
 model = load_model("rps.h5")
 
@@ -146,6 +147,7 @@ while True:
             if winner == "Computer":
                 computer_score += 1
                 rect_color = (0, 0, 255)
+                #playsound('winner.wav')
 
             elif winner == "User":
                 user_score += 1
