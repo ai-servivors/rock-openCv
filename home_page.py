@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter.ttk import *
 from time import strftime
-
+from playsound import playsound
 
 window = tk.Tk()
 window.geometry("511x513")
@@ -18,6 +18,7 @@ def get_time() :
 
 def show_input_field() :
     global input_name
+    playsound('BUTTON.wav')
     name_label = tk.Label(window, text = "Name", font=('MALDINI', 15),
                           activebackground='#6AFFD6',
                           bg='#2286FF',
@@ -43,6 +44,7 @@ def show_input_field() :
 def play() :
     global label_message1
     global name
+    playsound('BUTTON.wav')
     name = input_name.get()
     if not name :
        pass
@@ -51,6 +53,7 @@ def play() :
         import windowTwo
 
 def play_camera() :
+    playsound('BUTTON.wav')
     global label_message1
     global name
     name = input_name.get()
@@ -58,10 +61,16 @@ def play_camera() :
         pass
     else:
         window.destroy()
+        playsound('camstart.mp3', block=False)
         import final_app
 
 def close_window() :
-    window.destroy()
+#    window.destroy()
+    playsound('BUTTON.wav')
+
+def game_rules():
+   window.destroy()
+   import game_rules
 
 start_button = tk.Button(window, text = "Start",
                          font = ('MALDINI', 15),
@@ -75,10 +84,21 @@ exit_button = tk.Button(window, text = "Exit ",
                         font = ('MALDINI', 15),
                         command = close_window)
 
+game_rule = tk.Button(window, text = "Game Rules",
+                         font = ('MALDINI', 15),
+                         activebackground = '#6AFFD6',
+                         bg = '#2286FF',
+                         command =game_rules)
+
+
 start_button.place(x = 160, y = 350)
 exit_button.place(x = 325, y = 350)
+
+game_rule.place(x = 0, y = 0)
 
 label_time = Label(window, font=('ds-digital', 15), foreground = 'black' )
 label_time.place(x = 421, y = 488)
 #get_time()
+
 window.mainloop()
+
