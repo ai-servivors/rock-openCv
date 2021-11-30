@@ -19,30 +19,46 @@ def findout_winner(user_move, Computer_move):
         return "User"
     elif user_move == "rock" and Computer_move == "lizard":
         return "User"
-
     elif user_move == "rock" and Computer_move == "paper":
         return "Computer"
     elif user_move == "rock" and Computer_move == "spock":
-        return "Computer"
-
-    elif user_move == "scissor" and Computer_move == "rock":
-        return "Computer"
-    elif user_move == "scissor" and Computer_move == "spock":
         return "Computer"
 
     elif user_move == "scissor" and Computer_move == "paper":
         return "User"
     elif user_move == "scissor" and Computer_move == "lizard":
         return "User"
+    elif user_move == "scissor" and Computer_move == "rock":
+        return "Computer"
+    elif user_move == "scissor" and Computer_move == "spock":
+        return "Computer"
+
 
     elif user_move == "paper" and Computer_move == "rock":
         return "User"
     elif user_move == "paper" and Computer_move == "spock":
         return "User"
-
     elif user_move == "paper" and Computer_move == "scissor":
         return "Computer"
     elif user_move == "paper" and Computer_move == "lizard":
+        return "Computer"
+
+    elif user_move == "lizard" and Computer_move == "spock":
+        return "User"
+    elif user_move == "lizard" and Computer_move == "paper":
+        return "User"
+    elif user_move == "lizard" and Computer_move == "scissor":
+        return "Computer"
+    elif user_move == "lizard" and Computer_move == "rock":
+        return "Computer"
+
+    elif user_move == "spock" and Computer_move == "rock":
+        return "User"
+    elif user_move == "spock" and Computer_move == "scissor":
+        return "User"
+    elif user_move == "spock" and Computer_move == "lizard":
+        return "Computer"
+    elif user_move == "spock" and Computer_move == "paper":
         return "Computer"
 
 
