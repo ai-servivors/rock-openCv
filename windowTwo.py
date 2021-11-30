@@ -1,6 +1,7 @@
 import random
 import tkinter as tk
 from tkinter.ttk import *
+from playsound import playsound
 windowTwo = tk.Tk()
 windowTwo.geometry("1920x1080")
 windowTwo.title("Page 2")
@@ -14,7 +15,7 @@ computer_score = 0
 ############ OPTION #############
 options = tk.StringVar(windowTwo)
 options.set("Selected")
-user_action = tk.OptionMenu(windowTwo, options, "rock", "paper", "scissors")
+user_action = tk.OptionMenu(windowTwo, options, "rock", "paper", "scissors","lizard","spock")
 user_action.place(x = 730, y = 370)
 please_input = tk.Label(windowTwo, text = "Please Enter You Choice",
                         font = ("MALDINI", 15),
@@ -44,7 +45,7 @@ def dest():
 ############ GO FUNC #############
 def go() :
     global action, user_score, computer_score
-    possible_actions = ["rock", "paper", "scissors"]
+    possible_actions = ["rock", "paper", "scissors","lizard","spock"]
     computer_action = random.choice(possible_actions)
     #####################################
     ############ GAME LOGIC #############
@@ -64,13 +65,32 @@ def go() :
                               bg='#2fa0e4',
                               text="Rock smashes scissors! You win!")
             result.place(x=650, y=210)
-        else :
+            playsound('win1.mp3', block=False)
+        elif computer_action == "lizard":
+            user_score += 1
+            result = tk.Label(windowTwo, font=("MALDINI", 15),
+                              activebackground='#6AFFD6',
+                              bg='#2fa0e4',
+                              text="Rock smashes lizard! You win!")
+            result.place(x=650, y=210)
+            playsound('win1.mp3', block=False)
+        elif computer_action == "spock":
             computer_score += 1
             result = tk.Label(windowTwo, font=("MALDINI", 15),
                               activebackground='#6AFFD6',
                               bg='#2fa0e4',
-                              text=" Paper covers rock! You lose. ")
+                              text=" spock covers rock! You lose. ")
             result.place(x=650, y=210)
+
+        else:
+               computer_score += 1
+               result = tk.Label(windowTwo, font=("MALDINI", 15),
+                          activebackground='#6AFFD6',
+                          bg='#2fa0e4',
+                          text=" Paper covers rock! You lose. ")
+               result.place(x=650, y=210)
+
+
     elif options.get() == "paper":
         if computer_action == "rock":
             result = tk.Label(windowTwo, font=("MALDINI", 15),
@@ -79,12 +99,29 @@ def go() :
                               text=" Paper covers rock! You win! ")
             user_score += 1
             result.place(x=650, y=210)
-        else:
+            playsound('win1.mp3', block=False)
+        elif computer_action == "spock":
+            result = tk.Label(windowTwo, font=("MALDINI", 15),
+                              activebackground='#6AFFD6',
+                              bg='#2fa0e4',
+                              text=" Paper covers spock! You win! ")
+            user_score += 1
+            result.place(x=650, y=210)
+            playsound('win1.mp3', block=False)
+        elif computer_action == "lizard":
             computer_score += 1
             result = tk.Label(windowTwo, font = ("MALDINI", 15),
                               activebackground='#6AFFD6',
                               bg='#2fa0e4',
-                              text=" Scissors cuts paper! You lose. ")
+                              text=" lizard eats paper! You lose. ")
+            result.place(x=650, y=210)
+
+        else:
+            computer_score += 1
+            result = tk.Label(windowTwo, font=("MALDINI", 15),
+                          activebackground='#6AFFD6',
+                          bg='#2fa0e4',
+                          text=" Scissors cuts paper! You lose. ")
             result.place(x=650, y=210)
     elif options.get() == "scissors":
         if computer_action == "paper":
@@ -94,13 +131,95 @@ def go() :
                               text = " Scissors cuts paper! You win! ")
             user_score += 1
             result.place(x=650, y=210)
-        else:
+            playsound('win1.mp3', block=False)
+        elif computer_action == "lizard":
+            result = tk.Label(windowTwo, font=("MALDINI", 15),
+                              activebackground='#6AFFD6',
+                              bg='#2fa0e4',
+                              text=" Scissors cuts lizard! You win! ")
+            user_score += 1
+            result.place(x=650, y=210)
+            playsound('win1.mp3', block=False)
+        elif computer_action == "spock":
             computer_score += 1
             result = tk.Label(windowTwo, font=("MALDINI", 15),
                               activebackground='#6AFFD6',
                               bg='#2fa0e4',
-                              text=" Rock smashes scissors! You lose. ")
+                              text=" spock smashes scissors! You lose. ")
             result.place(x=650, y=210)
+        else:
+           computer_score += 1
+           result = tk.Label(windowTwo, font=("MALDINI", 15),
+                          activebackground='#6AFFD6',
+                          bg='#2fa0e4',
+                          text=" Rock smashes scissors! You lose. ")
+           result.place(x=650, y=210)
+
+
+    elif options.get() == "spock":
+        if computer_action == "rock":
+            result = tk.Label(windowTwo, font=("MALDINI", 15),
+                              activebackground='#6AFFD6',
+                              bg='#2fa0e4',
+                              text=" spock covers rock! You win! ")
+            user_score += 1
+            result.place(x=650, y=210)
+            playsound('win1.mp3', block=False)
+        elif computer_action == "scissors":
+            result = tk.Label(windowTwo, font=("MALDINI", 15),
+                              activebackground='#6AFFD6',
+                              bg='#2fa0e4',
+                              text=" spock smashes  scissors! You win! ")
+            user_score += 1
+            result.place(x=650, y=210)
+            playsound('win1.mp3', block=False)
+        elif computer_action == "paper":
+            computer_score += 1
+            result = tk.Label(windowTwo, font=("MALDINI", 15),
+                              activebackground='#6AFFD6',
+                              bg='#2fa0e4',
+                              text=" paper covers spock! You lose. ")
+            result.place(x=650, y=210)
+
+        else:
+           computer_score += 1
+           result = tk.Label(windowTwo, font=("MALDINI", 15),
+                          activebackground='#6AFFD6',
+                          bg='#2fa0e4',
+                          text=" lizard eats spock! You lose. ")
+           result.place(x=650, y=210)
+
+    elif options.get() == "lizard":
+        if computer_action == "paper":
+            result = tk.Label(windowTwo, font=("MALDINI", 15),
+                              activebackground='#6AFFD6',
+                              bg='#2fa0e4',
+                              text=" lizard eats paper! You win! ")
+            user_score += 1
+            result.place(x=650, y=210)
+            playsound('win1.mp3', block=False)
+        elif computer_action == "spock":
+            result = tk.Label(windowTwo, font=("MALDINI", 15),
+                              activebackground='#6AFFD6',
+                              bg='#2fa0e4',
+                              text=" lizard eats spock! You win! ")
+            user_score += 1
+            result.place(x=650, y=210)
+            playsound('win1.mp3', block=False)
+        elif computer_action == "rock":
+            computer_score += 1
+            result = tk.Label(windowTwo, font=("MALDINI", 15),
+                              activebackground='#6AFFD6',
+                              bg='#2fa0e4',
+                              text=" Rock smashes lizard! You lose. ")
+            result.place(x=650, y=210)
+        else:
+           computer_score += 1
+           result = tk.Label(windowTwo, font=("MALDINI", 15),
+                          activebackground='#6AFFD6',
+                          bg='#2fa0e4',
+                          text=" scissors cuts lizard! You lose. ")
+           result.place(x=650, y=210)
     ###########################
     ######## YES FUNC #########
     def play_again():
@@ -137,10 +256,14 @@ def go() :
                                   bg = '#2286FF',
                                   font = ('MALDINI', 15),
                                   pady = 10, padx = 20)
-        again_button.place(x = 690, y = 420)
+        again_button.place(x = 705, y = 420)
     ##############################
     ######## GAME FIINISH ########
     if user_score == 5 or computer_score == 5 :
+        if user_score == 5:
+           playsound('win.mp3', block=False)
+        if computer_score == 5:
+            playsound('lost.mp3', block=False)
         result4 = tk.Label(windowTwo, font=("MALDINI", 20),
                                 activebackground='#6AFFD6',
                                 bg='#2fa0e4',
