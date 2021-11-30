@@ -2,13 +2,13 @@ import cv2
 import numpy as np
 import time
 from tensorflow.keras.models import Model, load_model
-
+from playsound import playsound
 from random import choice,shuffle
 from scipy import stats as st
 
 from collections import deque
 
-model = load_model("rps.h5")
+model = load_model("rpslk4.h5")
 
 def findout_winner(user_move, Computer_move):
 
@@ -17,28 +17,43 @@ def findout_winner(user_move, Computer_move):
 
     elif user_move == "rock" and Computer_move == "scissor":
         return "User"
+    elif user_move == "rock" and Computer_move == "lizard":
+        return "User"
 
     elif user_move == "rock" and Computer_move == "paper":
+        return "Computer"
+    elif user_move == "rock" and Computer_move == "spock":
         return "Computer"
 
     elif user_move == "scissor" and Computer_move == "rock":
         return "Computer"
+    elif user_move == "scissor" and Computer_move == "spock":
+        return "Computer"
 
     elif user_move == "scissor" and Computer_move == "paper":
+        return "User"
+    elif user_move == "scissor" and Computer_move == "lizard":
         return "User"
 
     elif user_move == "paper" and Computer_move == "rock":
         return "User"
+    elif user_move == "paper" and Computer_move == "spock":
+        return "User"
 
     elif user_move == "paper" and Computer_move == "scissor":
         return "Computer"
+    elif user_move == "paper" and Computer_move == "lizard":
+        return "Computer"
+
 
 def show_winner(user_socre, computer_score):
 
     if user_socre > computer_score:
+        playsound('win.mp3', block=False)
         img = cv2.imread("images/youwin.png")
 
     elif user_socre < computer_score:
+        playsound('lost.mp3', block=False)
         img = cv2.imread("images/youlose.png")
 
     else:
@@ -87,7 +102,7 @@ width = int(cap.get(3))
 computer_move_name = "nothing"
 final_user_move = "nothing"
 
-label_names = ['nothing', 'paper', 'rock', 'scissor']
+label_names = ['lizard', 'nothing', 'paper', 'rock', 'scissor', 'spock']
 
 computer_score, user_score = 0, 0
 
@@ -140,7 +155,7 @@ while True:
 
             hand_inside = True
 
-            computer_move_name = choice(['rock', 'paper', 'scissor'])
+            computer_move_name = choice(['lizard', 'paper', 'rock', 'scissor', 'spock'])
             winner = findout_winner(final_user_move, computer_move_name)
             display_computer_move(computer_move_name, frame)
 
@@ -149,7 +164,7 @@ while True:
                 rect_color = (0, 0, 255)
 
             elif winner == "User":
-
+                playsound('win1.mp3', block=False)
                 user_score += 1
                 rect_color = (0, 250, 0)
 
@@ -164,7 +179,7 @@ while True:
                     start_time = time.time()
                 wait = True
 
-        if (time.time() - start_time) > 2 and (user_score == 5 or computer_score== 5):
+        if (time.time() - start_time) > 3 and (user_score == 5 or computer_score== 5):
 
             play_again = show_winner(user_score, computer_score)
 
