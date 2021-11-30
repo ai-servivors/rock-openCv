@@ -7,7 +7,7 @@ window = tk.Tk()
 window.geometry("511x513")
 window.resizable(0,0)
 window.title("Rock Paper Scissor")
-bg = tk.PhotoImage(file = "rockk.png")
+bg = tk.PhotoImage(file = "assets/rockk.png")
 image_label = Label(window, image = bg)
 image_label.place(x = -2, y = -2, relwidth = 1, relheight = 1)
 
