@@ -47,6 +47,11 @@ def go() :
     global action, user_score, computer_score
     possible_actions = ["rock", "paper", "scissors","lizard","spock"]
     computer_action = random.choice(possible_actions)
+    action = tk.Label(windowTwo, font=("MALDINI", 15),
+                      activebackground='#6AFFD6',
+                      bg='#2fa0e4',
+                      text=f"\nYou chose {options.get()}, computer chose {computer_action}.\n")
+    action.place(x=600, y=120)
     #####################################
     ############ GAME LOGIC #############
     if options.get() == computer_action :
@@ -249,11 +254,7 @@ def go() :
     ############################
     ########## SELECT ##########
     if options.get() != "Selected" :
-        action = tk.Label(windowTwo ,font = ("MALDINI", 15),
-                            activebackground = '#6AFFD6',
-                            bg = '#2fa0e4',
-                            text = f"\nYou chose {options.get()}, computer chose {computer_action}.\n" )
-        action.place(x = 600, y = 120)
+
         result3 = tk.Label(windowTwo, font=("MALDINI", 15),
                             activebackground='#6AFFD6',
                             bg='#2fa0e4',
