@@ -178,7 +178,7 @@ while True:
             if winner == "Computer":
                 computer_score += 1
                 rect_color = (0, 0, 255)
-
+                playsound('sounds/lost1.wav', block=False)
             elif winner == "User":
                 playsound('sounds/win1.mp3', block=False)
                 user_score += 1
