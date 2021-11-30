@@ -3,7 +3,7 @@ from tkinter.ttk import *
 window3 = tk.Tk()
 window3.geometry("511x550")
 window3.title("Rock Paper Scissor")
-bg1 = tk.PhotoImage(file="gamerules.png")
+bg1 = tk.PhotoImage(file="assets/gamerules.png")
 image_label1 = Label(window3, image=bg1)
 image_label1.pack()
 

@@ -7,8 +7,6 @@ from random import choice,shuffle
 from scipy import stats as st
 
 from collections import deque
-from playsound import
-
 
 model = load_model("rpslk4.h5")
 
@@ -67,11 +65,11 @@ def findout_winner(user_move, Computer_move):
 def show_winner(user_socre, computer_score):
 
     if user_socre > computer_score:
-        playsound('win.mp3', block=False)
+        playsound('sounds/win.mp3', block=False)
         img = cv2.imread("images/youwin.png")
 
     elif user_socre < computer_score:
-        playsound('lost.mp3', block=False)
+        playsound('sounds/lost.mp3', block=False)
         img = cv2.imread("images/youlose.png")
 
     else:
@@ -180,13 +178,11 @@ while True:
             if winner == "Computer":
                 computer_score += 1
                 rect_color = (0, 0, 255)
-                #playsound('winner.wav')
 
             elif winner == "User":
-                playsound('win1.mp3', block=False)
+                playsound('sounds/win1.mp3', block=False)
                 user_score += 1
                 rect_color = (0, 250, 0)
-                playsound('winner.wav')
 
             elif winner == "Tie":
                 rect_color = (255, 250, 255)
