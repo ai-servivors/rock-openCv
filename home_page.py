@@ -7,7 +7,7 @@ window = tk.Tk()
 window.geometry("511x513")
 window.resizable(0,0)
 window.title("Rock Paper Scissor")
-bg = tk.PhotoImage(file = "rockk.png")
+bg = tk.PhotoImage(file = "assets/rockk.png")
 image_label = Label(window, image = bg)
 image_label.place(x = -2, y = -2, relwidth = 1, relheight = 1)
 
@@ -18,6 +18,7 @@ def get_time() :
 
 def show_input_field() :
     global input_name
+    playsound('BUTTON.wav')
     name_label = tk.Label(window, text = "Name", font=('MALDINI', 15),
                           activebackground='#6AFFD6',
                           bg='#2286FF',
@@ -43,6 +44,7 @@ def show_input_field() :
 def play() :
     global label_message1
     global name
+    playsound('BUTTON.wav')
     name = input_name.get()
     if not name :
        pass
@@ -51,6 +53,7 @@ def play() :
         import windowTwo
 
 def play_camera() :
+    playsound('BUTTON.wav')
     global label_message1
     global name
     name = input_name.get()
@@ -62,7 +65,8 @@ def play_camera() :
         import final_app
 
 def close_window() :
-    window.destroy()
+#    window.destroy()
+    playsound('BUTTON.wav')
 
 def game_rules():
    window.destroy()
@@ -95,4 +99,6 @@ game_rule.place(x = 0, y = 0)
 label_time = Label(window, font=('ds-digital', 15), foreground = 'black' )
 label_time.place(x = 421, y = 488)
 #get_time()
+
 window.mainloop()
+
